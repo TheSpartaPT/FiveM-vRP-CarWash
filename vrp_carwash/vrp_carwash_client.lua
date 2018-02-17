@@ -9,8 +9,6 @@ vehicleWashStation = {
 	{-699.6325,  -932.7043,  17.0139}
 }
 
-vRP = Proxy.getInterface("vRP")
-
 Citizen.CreateThread(function ()
 	Citizen.Wait(0)
 	for i = 1, #vehicleWashStation do
@@ -26,6 +24,12 @@ function vrp_carwash_DrawSubtitleTimed(m_text, showtime)
 	SetTextEntry_2('STRING')
 	AddTextComponentString(m_text)
 	DrawSubtitleTimed(showtime, 1)
+end
+
+function vrp_carwash_notify(m_text)
+	SetNotificationTextEntry("STRING")
+	AddTextComponentString(m_text)
+	DrawNotification(true, false)
 end
 
 Citizen.CreateThread(function ()
@@ -50,17 +54,17 @@ RegisterNetEvent('vrp_carwash:success')
 AddEventHandler('vrp_carwash:success', function (price)
 	WashDecalsFromVehicle(GetVehiclePedIsUsing(GetPlayerPed(-1)), 1.0)
 	SetVehicleDirtLevel(GetVehiclePedIsUsing(GetPlayerPed(-1)))
-	vRP.notify({"Your vehicle was ~y~cleaned~s~! ~g~-$" .. price .. "~s~!"})
+	vrp_carwash_notify("Your vehicle was ~y~cleaned~s~! ~g~-$" .. price .. "~s~!")
 end)
 
 RegisterNetEvent('vrp_carwash:notenoughmoney')
 AddEventHandler('vrp_carwash:notenoughmoney', function (moneyleft)
-	vRP.notify({"~h~~r~You don't have enough money! $" .. moneyleft .. " left!"})
+	vrp_carwash_notify("~h~~r~You don't have enough money! $" .. moneyleft .. " left!")
 end)
 
 RegisterNetEvent('vrp_carwash:free')
 AddEventHandler('vrp_carwash:free', function ()
 	WashDecalsFromVehicle(GetVehiclePedIsUsing(GetPlayerPed(-1)), 1.0)
 	SetVehicleDirtLevel(GetVehiclePedIsUsing(GetPlayerPed(-1)))
-	vRP.notify({"Your vehicle was ~y~cleaned~s~ for free!"})
+	vrp_carwash_notify("Your vehicle was ~y~cleaned~s~ for free!")
 end)
