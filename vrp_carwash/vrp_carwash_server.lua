@@ -1,6 +1,6 @@
 --Settings--
 
-enableprice = false -- true = carwash is paid, false = carwash is free
+enableprice = true -- true = carwash is paid, false = carwash is free
 
 price = 100 -- you may edit this to your liking. if "enableprice = false" ignore this one
 
