@@ -1,3 +1,6 @@
+# WARNING:
+### Repo is archived, you can still fork it if you want to change stuff, I won't be changing anything / updating from now on I stopped playing FiveM.
+
 # FiveM [vRP] CarWash
 
 Quick Disclaimer: this script is an edited version of [this one](https://forum.fivem.net/t/release-carwash-updated/9615), to add a payment functionality nothing else!
